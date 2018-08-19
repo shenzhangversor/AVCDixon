@@ -1,0 +1,90 @@
+{
+	"name": "pipeline - Test Copy",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy - TT_Employee",
+				"type": "Copy",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false
+				},
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource"
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"rnk1": "rnk1",
+							"UID": "UID",
+							"EmployeeCode": "EmployeeCode",
+							"Emp_Name": "Emp_Name",
+							"NameFamily": "NameFamily",
+							"NameFirst": "NameFirst",
+							"NameShort": "NameShort",
+							"JobTitle": "JobTitle",
+							"Emp_Dept": "Emp_Dept",
+							"Emp_Role": "Emp_Role",
+							"DOB": "DOB",
+							"Street1": "Street1",
+							"Street2": "Street2",
+							"Suburb": "Suburb",
+							"State": "State",
+							"Postcode": "Postcode",
+							"Phone": "Phone",
+							"PhoneExt": "PhoneExt",
+							"Mobile": "Mobile",
+							"Email": "Email",
+							"SecondaryPhone": "SecondaryPhone",
+							"SecondaryEmail": "SecondaryEmail",
+							"DateStart": "DateStart",
+							"DateEnd": "DateEnd",
+							"ProbationDays": "ProbationDays",
+							"FPC": "FPC",
+							"PayrollCode": "PayrollCode",
+							"FPRead": "FPRead",
+							"DefaultLocationID": "DefaultLocationID",
+							"DefaultDepartment": "DefaultDepartment",
+							"DefaultPeriod": "DefaultPeriod",
+							"DefaultRole": "DefaultRole",
+							"Sex": "Sex",
+							"RostMaxHrs": "RostMaxHrs",
+							"Lastedit": "Lastedit",
+							"LastEditBy": "LastEditBy",
+							"CreatedAt": "CreatedAt",
+							"CreatedBy": "CreatedBy",
+							"ModifiedAt": "ModifiedAt",
+							"ModifiedBy": "ModifiedBy",
+							"HashVal": "HashVal",
+							"delta_dt": "delta_dt",
+							"landing_dt": "landing_dt",
+							"Category": "Category"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "src_TT_Employee",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "dst_TT_Employee",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

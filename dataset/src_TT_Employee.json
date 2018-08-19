@@ -1,0 +1,193 @@
+{
+	"name": "src_TT_Employee",
+	"properties": {
+		"description": "[landing].[TT_Employee]",
+		"linkedServiceName": {
+			"referenceName": "vrsdb",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "rnk1",
+				"type": "Int64"
+			},
+			{
+				"name": "UID",
+				"type": "String"
+			},
+			{
+				"name": "EmployeeCode",
+				"type": "String"
+			},
+			{
+				"name": "Emp_Name",
+				"type": "String"
+			},
+			{
+				"name": "NameFamily",
+				"type": "String"
+			},
+			{
+				"name": "NameFirst",
+				"type": "String"
+			},
+			{
+				"name": "NameShort",
+				"type": "String"
+			},
+			{
+				"name": "JobTitle",
+				"type": "String"
+			},
+			{
+				"name": "Emp_Dept",
+				"type": "String"
+			},
+			{
+				"name": "Emp_Role",
+				"type": "String"
+			},
+			{
+				"name": "DOB",
+				"type": "DateTime"
+			},
+			{
+				"name": "Street1",
+				"type": "String"
+			},
+			{
+				"name": "Street2",
+				"type": "String"
+			},
+			{
+				"name": "Suburb",
+				"type": "String"
+			},
+			{
+				"name": "State",
+				"type": "String"
+			},
+			{
+				"name": "Postcode",
+				"type": "String"
+			},
+			{
+				"name": "Phone",
+				"type": "String"
+			},
+			{
+				"name": "PhoneExt",
+				"type": "String"
+			},
+			{
+				"name": "Mobile",
+				"type": "String"
+			},
+			{
+				"name": "Email",
+				"type": "String"
+			},
+			{
+				"name": "SecondaryPhone",
+				"type": "String"
+			},
+			{
+				"name": "SecondaryEmail",
+				"type": "String"
+			},
+			{
+				"name": "DateStart",
+				"type": "DateTime"
+			},
+			{
+				"name": "DateEnd",
+				"type": "DateTime"
+			},
+			{
+				"name": "ProbationDays",
+				"type": "Int32"
+			},
+			{
+				"name": "FPC",
+				"type": "String"
+			},
+			{
+				"name": "PayrollCode",
+				"type": "String"
+			},
+			{
+				"name": "FPRead",
+				"type": "String"
+			},
+			{
+				"name": "DefaultLocationID",
+				"type": "String"
+			},
+			{
+				"name": "DefaultDepartment",
+				"type": "String"
+			},
+			{
+				"name": "DefaultPeriod",
+				"type": "String"
+			},
+			{
+				"name": "DefaultRole",
+				"type": "String"
+			},
+			{
+				"name": "Sex",
+				"type": "String"
+			},
+			{
+				"name": "RostMaxHrs",
+				"type": "Double"
+			},
+			{
+				"name": "Lastedit",
+				"type": "DateTime"
+			},
+			{
+				"name": "LastEditBy",
+				"type": "String"
+			},
+			{
+				"name": "CreatedAt",
+				"type": "DateTime"
+			},
+			{
+				"name": "CreatedBy",
+				"type": "String"
+			},
+			{
+				"name": "ModifiedAt",
+				"type": "DateTime"
+			},
+			{
+				"name": "ModifiedBy",
+				"type": "String"
+			},
+			{
+				"name": "HashVal",
+				"type": "Byte[]"
+			},
+			{
+				"name": "delta_dt",
+				"type": "DateTime"
+			},
+			{
+				"name": "landing_dt",
+				"type": "DateTime"
+			},
+			{
+				"name": "Category",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[landing].[TT_Employee]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
