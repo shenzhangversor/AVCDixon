@@ -6,14 +6,6 @@
 			"type": "string",
 			"metadata": "Data Factory Name",
 			"defaultValue": "HL-2-VRSDB-DEV"
-		},
-		"vrsdb_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'vrsdb'"
-		},
-		"vrsdb_dev_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'vrsdb_dev'"
 		}
 	},
 	"variables": {
@@ -29,14 +21,12 @@
 					{
 						"name": "Copy - TT_Employee",
 						"type": "Copy",
-						"dependsOn": [],
 						"policy": {
 							"timeout": "7.00:00:00",
 							"retry": 0,
 							"retryIntervalInSeconds": 30,
 							"secureOutput": false
 						},
-						"userProperties": [],
 						"typeProperties": {
 							"source": {
 								"type": "SqlSource"
@@ -100,23 +90,19 @@
 						"inputs": [
 							{
 								"referenceName": "src_TT_Employee",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "dst_TT_Employee",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					}
-				],
-				"annotations": []
+				]
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/src_TT_Employee')]",
 				"[concat(variables('factoryId'), '/datasets/dst_TT_Employee')]"
 			]
 		},
@@ -129,7 +115,6 @@
 					"referenceName": "vrsdb_dev",
 					"type": "LinkedServiceReference"
 				},
-				"annotations": [],
 				"type": "AzureSqlTable",
 				"structure": [
 					{
@@ -312,234 +297,7 @@
 				"typeProperties": {
 					"tableName": "[concat('[', 'landing].[TT_Employee]')]"
 				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/vrsdb_dev')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/src_TT_Employee')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "[concat('[', 'landing].[TT_Employee]')]",
-				"linkedServiceName": {
-					"referenceName": "vrsdb",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"structure": [
-					{
-						"name": "rnk1",
-						"type": "Int64"
-					},
-					{
-						"name": "UID",
-						"type": "String"
-					},
-					{
-						"name": "EmployeeCode",
-						"type": "String"
-					},
-					{
-						"name": "Emp_Name",
-						"type": "String"
-					},
-					{
-						"name": "NameFamily",
-						"type": "String"
-					},
-					{
-						"name": "NameFirst",
-						"type": "String"
-					},
-					{
-						"name": "NameShort",
-						"type": "String"
-					},
-					{
-						"name": "JobTitle",
-						"type": "String"
-					},
-					{
-						"name": "Emp_Dept",
-						"type": "String"
-					},
-					{
-						"name": "Emp_Role",
-						"type": "String"
-					},
-					{
-						"name": "DOB",
-						"type": "DateTime"
-					},
-					{
-						"name": "Street1",
-						"type": "String"
-					},
-					{
-						"name": "Street2",
-						"type": "String"
-					},
-					{
-						"name": "Suburb",
-						"type": "String"
-					},
-					{
-						"name": "State",
-						"type": "String"
-					},
-					{
-						"name": "Postcode",
-						"type": "String"
-					},
-					{
-						"name": "Phone",
-						"type": "String"
-					},
-					{
-						"name": "PhoneExt",
-						"type": "String"
-					},
-					{
-						"name": "Mobile",
-						"type": "String"
-					},
-					{
-						"name": "Email",
-						"type": "String"
-					},
-					{
-						"name": "SecondaryPhone",
-						"type": "String"
-					},
-					{
-						"name": "SecondaryEmail",
-						"type": "String"
-					},
-					{
-						"name": "DateStart",
-						"type": "DateTime"
-					},
-					{
-						"name": "DateEnd",
-						"type": "DateTime"
-					},
-					{
-						"name": "ProbationDays",
-						"type": "Int32"
-					},
-					{
-						"name": "FPC",
-						"type": "String"
-					},
-					{
-						"name": "PayrollCode",
-						"type": "String"
-					},
-					{
-						"name": "FPRead",
-						"type": "String"
-					},
-					{
-						"name": "DefaultLocationID",
-						"type": "String"
-					},
-					{
-						"name": "DefaultDepartment",
-						"type": "String"
-					},
-					{
-						"name": "DefaultPeriod",
-						"type": "String"
-					},
-					{
-						"name": "DefaultRole",
-						"type": "String"
-					},
-					{
-						"name": "Sex",
-						"type": "String"
-					},
-					{
-						"name": "RostMaxHrs",
-						"type": "Double"
-					},
-					{
-						"name": "Lastedit",
-						"type": "DateTime"
-					},
-					{
-						"name": "LastEditBy",
-						"type": "String"
-					},
-					{
-						"name": "CreatedAt",
-						"type": "DateTime"
-					},
-					{
-						"name": "CreatedBy",
-						"type": "String"
-					},
-					{
-						"name": "ModifiedAt",
-						"type": "DateTime"
-					},
-					{
-						"name": "ModifiedBy",
-						"type": "String"
-					},
-					{
-						"name": "HashVal",
-						"type": "Byte[]"
-					},
-					{
-						"name": "delta_dt",
-						"type": "DateTime"
-					},
-					{
-						"name": "landing_dt",
-						"type": "DateTime"
-					},
-					{
-						"name": "Category",
-						"type": "String"
-					}
-				],
-				"typeProperties": {
-					"tableName": "[concat('[', 'landing].[TT_Employee]')]"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/vrsdb')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/vrsdb')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('vrsdb_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/vrsdb_dev')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('vrsdb_dev_connectionString')]"
-				}
-			},
-			"dependsOn": []
+			}
 		}
 	]
 }
