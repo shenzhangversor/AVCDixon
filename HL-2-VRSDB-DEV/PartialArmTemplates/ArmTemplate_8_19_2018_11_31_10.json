@@ -6,14 +6,6 @@
 			"type": "string",
 			"metadata": "Data Factory Name",
 			"defaultValue": "HL-2-VRSDB-DEV"
-		},
-		"vrsdb_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'vrsdb'"
-		},
-		"vrsdb_dev_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'vrsdb_dev'"
 		}
 	},
 	"variables": {
@@ -29,14 +21,12 @@
 					{
 						"name": "Copy - TT_Employee",
 						"type": "Copy",
-						"dependsOn": [],
 						"policy": {
 							"timeout": "7.00:00:00",
 							"retry": 0,
 							"retryIntervalInSeconds": 30,
 							"secureOutput": false
 						},
-						"userProperties": [],
 						"typeProperties": {
 							"source": {
 								"type": "SqlSource"
@@ -100,20 +90,17 @@
 						"inputs": [
 							{
 								"referenceName": "src_TT_Employee",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "dst_TT_Employee",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					}
-				],
-				"annotations": []
+				]
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/src_TT_Employee')]",
@@ -129,7 +116,6 @@
 					"referenceName": "vrsdb_dev",
 					"type": "LinkedServiceReference"
 				},
-				"annotations": [],
 				"type": "AzureSqlTable",
 				"structure": [
 					{
@@ -312,10 +298,7 @@
 				"typeProperties": {
 					"tableName": "[concat('[', 'landing].[TT_Employee_TEST]')]"
 				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/vrsdb_dev')]"
-			]
+			}
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/src_TT_Employee')]",
@@ -327,7 +310,6 @@
 					"referenceName": "vrsdb",
 					"type": "LinkedServiceReference"
 				},
-				"annotations": [],
 				"type": "AzureSqlTable",
 				"structure": [
 					{
@@ -510,36 +492,7 @@
 				"typeProperties": {
 					"tableName": "[concat('[', 'landing].[TT_Employee]')]"
 				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/vrsdb')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/vrsdb')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('vrsdb_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/vrsdb_dev')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('vrsdb_dev_connectionString')]"
-				}
-			},
-			"dependsOn": []
+			}
 		}
 	]
 }
