@@ -185,7 +185,7 @@
 			}
 		],
 		"typeProperties": {
-			"tableName": "[landing].[TT_Employee_TEST]"
+			"tableName": "[landing].[TT_Employee]"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
